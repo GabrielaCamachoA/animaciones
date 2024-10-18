@@ -56,6 +56,7 @@ section#a1 article{
    align-items: center;
    justify-content: center;
    margin-top: 10px;
+   width: 100%;
 }
 .element{
     height: 200px;
@@ -120,27 +121,43 @@ section#a2 article .div-blanco{
 }
 
 section#a3{
-    --range-start: 50vh;
-    --range-end: 50vh;
-    height: 50vh;
+    --range-start: 600vh;
+    --range-end: 800vh;
+    height: 300vh;
     color: #fff;
 }
-section#a3 article div{
-    background-color: #03045e;
+section#a3 article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+    animation: movimiento linear;
+}
+.front{
+    background-color: blue;
+}
+.back{
+    background-color: coral;
+    transform: rotateY(180deg);
+}
+.front, .back{
+    position: absolute;
     height: 200px;
     width: 200px;
-    display: flex;
-    margin: 260px auto;
-    animation: movimiento linear 1s;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    box-sizing: border-box;
 }
 
 @keyframes movimiento{
     from{
-        transform: rotateX(40deg);
-        transition: transform 0.5s ease-out;
+        transform: rotateY(0deg);
+    }
+    50%{
+        transform: rotateY(180deg);
     }
     to{
-        transform: rotateX(180deg);
-    transition: transform 0.5s ease-out;
+        transform: rotateY(360deg);
     }
 }
